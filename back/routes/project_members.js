@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const member = require('../controller/project_members.js');
+const auth = require('../middleware/authMiddleware.js');
+router.use(auth);
+router.post('/:projectId/add', member.addMember);
+router.put('/:projectId/:memberId/role', member.updateRole);
+router.delete('/:projectId/:memberId', member.removeMember);
+router.get('/:projectId', member.listMembers);
+module.exports = router;
